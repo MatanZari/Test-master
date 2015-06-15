@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        //ddddddddddddd
+
     }
 
     public  boolean isInternetConnected(){
