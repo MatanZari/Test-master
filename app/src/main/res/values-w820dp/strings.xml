@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play_button">play</string>
+    <string name="thumbnail_image">thumbnail</string>
+    <string name="youtube_error">Sorry, restricted video</string>
+    <string name="loading">loading</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="instagram_src">Instagram</string>
+    <string name="twitter_src">Twitter</string>
+    <string name="flickr_src">Flickr</string>
+    <string name="youtube_src">Youtube</string>
+    <string name="soundcloud_src">Soundcloud</string>
+    <string name="vimeo_src">Vimeo</string>
+    <string name="pinterest_src">Pinterest</string>
+    <string name="rss_src">Site</string>
+    <string name="tumblr_src">Tumblr</string>
+    <string name="bandsintown_src">Bandsintown</string>
+    <string name="spotify_src">Spotify</string>
+    <string name="facebook_src">Facebook</string>
+    <string name="vine_src">Vine</string>
+    <string name="googleplus_src">Googleplus</string>
+    <string name="linkedin_src">Linkedin</string>
+    <string name="none" />
+    <string name="youtube_api_key">AIzaSyAdaiI84wKJP0TZBkCz98EDxsIoNfe0tSc</string>
+    <string name="play_button">play</string>
+    <string name="thumbnail_image">thumbnail</string>
+    <string name="youtube_error">Sorry, restricted video</string>
+    <string name="loading">loading</string>
+</resources>
