@@ -20,6 +20,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import adapters.MyPagerAdapter;
+import helper.Utils;
 import tabs.SlidingTabLayout;
 
 
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         sp = getSharedPreferences(SP_NAME,MODE_PRIVATE);
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
+        Utils.init(this);
 
 
         // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.

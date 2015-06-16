@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,11 +28,12 @@ public class GifItem implements FeedItem{
     ItemData itemData;
     ViewHolder holder;
     LinearLayout root;
+    private static int ITEM_W_SIZE = Utils.getScreenWidth();
+    private static int ITEM_H_SIZE = ITEM_W_SIZE * 9 / 16;
 
     public GifItem(Context context, ItemData itemData) {
         this.context = context;
         this.itemData = itemData;
-        //((Activity)context).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
     }
 
     @Override
@@ -46,7 +49,7 @@ public class GifItem implements FeedItem{
             FrameLayout gifContainer = (FrameLayout) convertView.findViewById(R.id.gif_container);
             TextView name = (TextView) convertView.findViewById(R.id.name);
             RImageView cover = (RImageView) convertView.findViewById(R.id.gifItemCover);
-            ShowGifView gif = (ShowGifView) convertView.findViewById(R.id.gif);
+            WebView gif = (WebView) convertView.findViewById(R.id.gif);
             TextView time = (TextView) convertView.findViewById(R.id.time);
             TextView text = (TextView) convertView.findViewById(R.id.text);
             root = (LinearLayout) convertView.findViewById(R.id.root);
@@ -57,6 +60,14 @@ public class GifItem implements FeedItem{
             holder.time = time;
             holder.text = text;
             holder.gifContainer = gifContainer;
+            holder.gif.setLayoutParams(new FrameLayout.LayoutParams(ITEM_W_SIZE, ITEM_H_SIZE));
+            holder.gif.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    holder.gif.setVisibility(View.VISIBLE);
+                }
+            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -65,7 +76,7 @@ public class GifItem implements FeedItem{
         int dp = Utils.getDP1();
         holder.cover.setTargetSize(35 * dp * 2, 35 * dp * 2);
         holder.cover.loadImageCircleBitmap(itemData.collData.cover);
-        holder.gif.setGifURL(itemData.img);
+        playGif(itemData.img,holder.gif);
         holder.time.setText(itemData.dateShort + " ago on " + context.getString(itemData.sourceStrId));
         holder.name.setText(itemData.collData.title);
 
@@ -86,7 +97,7 @@ public class GifItem implements FeedItem{
         TextView name;
         FrameLayout gifContainer;
         RImageView cover;
-        ShowGifView gif;
+        WebView gif;
         TextView time;
         TextView text;
         LinearLayout root;
@@ -94,5 +105,11 @@ public class GifItem implements FeedItem{
     }
 
 
+    private void playGif(String url, WebView gif) {
+        holder.gif.setVisibility(View.INVISIBLE);
+        String data = "<html><body><img src=" + url
+                + " width='100%' height='100%'/></body></html>";
+        gif.loadDataWithBaseURL("", data, "text/html", "UTF-8", "");
+    }
 
 }

@@ -33,6 +33,7 @@ import adapters.FeedAdapter;
 import helper.ExpendImage;
 import helper.FragmentUiLifeCycleHelper;
 import items.FeedItem;
+import items.GifItem;
 import items.ImageItem;
 import items.ItemData;
 import items.MP4VideoItem;
@@ -82,7 +83,7 @@ public class HomeFragment extends Fragment implements FragmentUiLifeCycleHelper,
         if (activity.isInternetConnected()) {
             httpTask = new MainHttpTask(activity);
             Request request = new Request();
-            request.urlStr = "http://wolflo.com/walls/system/killswitchengage/all?skip=0&limit=30";
+            request.urlStr = "http://wolflo.com/walls/system/giphy/all?skip=0&limit=30";
             request.callback = homeCallback;
             executor = new Executor();
             executor.execute(httpTask, request);
@@ -196,6 +197,8 @@ public class HomeFragment extends Fragment implements FragmentUiLifeCycleHelper,
                     if (itemData.type.equals("image")) {
                         if (!itemData.img.contains(".gif"))
                             data.add(new ImageItem(activity, itemData, HomeFragment.this));
+                        else
+                            data.add(new GifItem(activity,itemData));
                     } else if (itemData.type.equals("video") && !itemData.source.equals("youtube") && !itemData.source.equals("vimeo")) {
                         data.add(new MP4VideoItem(activity, itemData));
                     } else if (itemData.type.equals("video") && itemData.source.equals("youtube")) {
