@@ -1,5 +1,6 @@
 package items;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ public class GifItem implements FeedItem{
         return FeedAdapter.types.GIF.ordinal();
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(LayoutInflater inflater, View convertView) {
         if (convertView == null) {
