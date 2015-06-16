@@ -1,11 +1,8 @@
 package items;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
@@ -16,7 +13,6 @@ import com.lyuzik.remoteimageview.RImageView;
 import com.zari.matan.testapk.R;
 
 import adapters.FeedAdapter;
-import helper.ShowGifView;
 import helper.Utils;
 
 /**
